@@ -79,9 +79,10 @@ const tourSchema = new mongoose.Schema({
 },
 
     {
-        toJson: { virtuals: true }, // Bu iki true sayesinde virtual fieldler json ve object olarak datalar da gozukur
+        toJSON: { virtuals: true }, // Bu iki true sayesinde virtual fieldler json ve object olarak datalar da gozukur
         toObject: { virtuals: true }
-    })
+    }
+)
 
 tourSchema.virtual('durationWeeks').get(function () { // Bu virtual field database uzerinde kayit edilmez ve default olarak responselarda gozukmez
     return this.duration / 7;

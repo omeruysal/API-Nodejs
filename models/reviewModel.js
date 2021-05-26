@@ -32,6 +32,15 @@ const reviewSchema = new mongoose.Schema(
     toObject: { virtuals: true }
   }
 );
+
+reviewSchema.pre(/^find/, function (next) { //buradaa tum find methodlari icin populate islemi yapariz yani user idsi yerine user name gozukur/Tour icin yapmadigimizdan dolayi sadece tour idsi gozukur
+  this.populate({
+    path: 'user',
+    select: 'name'
+  })
+  next();
+})
+
 const Review = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
