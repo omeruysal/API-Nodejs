@@ -8,6 +8,8 @@ router.post('/signup', authController.signup)
 router.post('/login', authController.login)
 router.patch('/updatePassword', authController.protect, authController.updatePassword)
 
+router.patch('/updateMe', authController.protect, userController.updateMe)
+
 router
   .route('/')
   .get(authController.protect,userController.getAllUsers)
@@ -20,3 +22,4 @@ router
   .delete(userController.deleteUser);
 
 module.exports = router;
+

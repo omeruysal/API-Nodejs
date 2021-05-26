@@ -6,6 +6,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const globalErrorHandler = require('./controllers/errorController');
 
+const reviewRouter = require('./routes/reviewRoutes');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const AppError = require('./utils/appError');
@@ -34,6 +35,8 @@ app.use(xss());//form inputlari ile gelen HTML kodlarini engeller
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewRouter);
+
 
 app.all('*', (req, res, next) => { //app.use'da kullanabilirdik , hemen hemen ayni islevdeler fakat app.all daha global islemlerde kullanilir
     

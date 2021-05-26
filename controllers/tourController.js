@@ -27,7 +27,7 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
 //erroru return ederiz cunku etmezsek kod asagiya devam eder
 exports.getTour = catchAsync(async (req, res, next) => {
     
-    const tour = await Tour.findById(req.params.id);
+    const tour = await Tour.findById(req.params.id).populate('reviews');
      if(!tour){
        return   next(new AppError('Bu id ye sahip tour bulunmamaktadir', 404)) //throw or return ?? Express patterne gore return
      }
