@@ -116,13 +116,13 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
         return next(new AppError('Current Password hatali', 401))
     }
 
-    //useri guncelleriz, kisaca findByIdAndUpdate yapmadik cunku validator
+    //useri guncelleriz, kisaca findByIdAndUpdate yapmadik cunku validator kullaniyoruz. { runValidators: true } desek bile find methodlari this keywordunu obje icin kullanamaz. (passwordConfirm validatoru this keywordu kullanmaktadir bunun etkin olabilmesi icin save kullaniriz)
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
-    await user.save();
+    await user.save(); //Diger validatorler neden calismadi diye bir soru dusunursek onun cevabi; zaten var olan bir document ile save methodu cagirdigimizda update islemi yapar. Diger fieldler zaten validationa uygundur
 
     const token = signToken(user._id)
-    // { runValidators: true }
+    
 
     res.status(200).json({
         status: 'success',

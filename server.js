@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const app = require('./app');
+//"mongodb://localhost/tour-app"
 
+//mongoose.connect("mongodb+srv://user:Password@cluster0.b17pv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 mongoose.connect("mongodb://localhost/tour-app",
     {
         useNewUrlParser: true,
