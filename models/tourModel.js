@@ -42,9 +42,9 @@ const tourSchema = new mongoose.Schema({
             validator: function (value) { //value discountu temsil eder. Eger discount pricedan fazla ise false donecek ve kayit olmayacaktir
                 console.log("value : " + value);
                 console.log("price : " + this.price);
-                return value < this.price;
+                return value > this.price;
             },
-            message: 'discount pricetan buyuk olamaz'
+            message: 'priceDiscount pricetan buyuk olamaz'
         }
     },
     summary: {

@@ -65,6 +65,7 @@ exports.createUser = (req, res) => {
     message: 'This route is not yet defined!'
   });
 };
+//Password update edilemez
 exports.updateUser = (req, res) => {
   res.status(500).json({
     status: 'error',

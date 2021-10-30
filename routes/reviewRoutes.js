@@ -2,7 +2,7 @@ const express = require('express');
 const reviewController = require('../controllers/reviewController');
 const authController = require('../controllers/authController');
 
-const router = express.Router({mergeParams : true}); // ust routetan gelen parametreleri alabilmek icin
+const router = express.Router({mergeParams : true}); // ust routetan gelen parametreleri alabilmek icin (tourRoutes'tan) createReview icinde param.tourId diyerek ulasim saglariz
 
 //router.use(authController.protect);
 
